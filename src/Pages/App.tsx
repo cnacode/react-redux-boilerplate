@@ -1,14 +1,14 @@
-import React, {Suspense} from 'react';
-import './Theme/App.css';
-import { AuthenticationState } from './Components/authentication'
+import React, { FC, Suspense} from 'react';
+import '../Theme/App.css';
+import { AuthenticationState } from '../Components/authentication'
 import { connect } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-import Loading from './Components/loading';
-import theme from './Theme';
+import { ThemeProvider } from 'emotion-theming'
+import Loading from '../Components/loading';
+import theme from '../Theme';
 
 
-const AuthenticatedApp = React.lazy(() => import('./Pages/authenticated-app'))
-const UnauthenticatedApp = React.lazy(() => import('./Pages/unauthenticated-app'))
+const AuthenticatedApp = React.lazy(() => import('./authenticated-app'))
+const UnauthenticatedApp = React.lazy(() => import('./unauthenticated-app'))
 
 
 export type AppProps = {
@@ -17,14 +17,15 @@ export type AppProps = {
 }
 
 
-const App = (
+const App: FC<AppProps> = (
   {
   authentication: {
     authenticated = false, 
     inProgress = false,
   }
-}: AppProps) => {
-  if(inProgress) return <ThemeProvider theme={theme}><Loading/></ThemeProvider>
+}) => {
+  if(inProgress) return <ThemeProvider theme={theme}><Loading/></ThemeProvider>;
+
   return (
   <Suspense fallback={Loading}>
      <ThemeProvider theme={theme}>
