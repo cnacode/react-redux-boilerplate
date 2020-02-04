@@ -3,6 +3,7 @@ import '../Theme/App.css';
 import { AuthenticationState } from '../Components/authentication'
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'emotion-theming'
+import {IntlProvider, IntlConfig} from 'react-intl';
 import Loading from '../Components/loading';
 import theme from '../Theme';
 
@@ -14,6 +15,7 @@ const UnauthenticatedApp = React.lazy(() => import('./unauthenticated-app'))
 export type AppProps = {
   authentication: AuthenticationState,
   theme: any,
+  i18n: IntlConfig,
 }
 
 
@@ -22,15 +24,18 @@ const App: FC<AppProps> = (
   authentication: {
     authenticated = false, 
     inProgress = false,
-  }
+  },
+  i18n: {locale}
 }) => {
   if(inProgress) return <ThemeProvider theme={theme}><Loading/></ThemeProvider>;
 
   return (
   <Suspense fallback={Loading}>
-     <ThemeProvider theme={theme}>
-     { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
-     </ThemeProvider>
+    <IntlProvider locale={locale}>
+      <ThemeProvider theme={theme}>
+      { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
+      </ThemeProvider>
+    </IntlProvider>
   </Suspense>
   );
 }
