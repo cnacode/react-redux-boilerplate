@@ -1,4 +1,4 @@
 export default {
-    primary: 'black',
+    primary: 'red',
     secondary: 'grey'
 }

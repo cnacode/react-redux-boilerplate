@@ -17,7 +17,7 @@ const logoutStart = logoutStartAction.toString();
 
 const defaultState = {
     authenticated: false,
-    inProgress: false,
+    inProgress: true,
 }
 
 const handlers = {
