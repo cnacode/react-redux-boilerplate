@@ -2,7 +2,7 @@
 a typescript based react boilerplate with redux for state management
 
 
-## Architecture
+## Architecture:
 
 
 
