@@ -12,19 +12,23 @@ const UnauthenticatedApp = React.lazy(() => import('./Pages/unauthenticated-app'
 
 
 export type AppProps = {
-  authentication?: AuthenticationState,
+  authentication: AuthenticationState,
   theme: any,
 }
 
 
-const App = (props: AppProps) => {
-  const authenticated = (props && props.authentication && props.authentication.authenticated) ? props.authentication.authenticated : false;
-  
+const App = (
+  {
+  authentication: {
+    authenticated = false, 
+    inProgress = false,
+  }
+}: AppProps) => {
+  if(inProgress) return <ThemeProvider theme={theme}><Loading/></ThemeProvider>
   return (
   <Suspense fallback={Loading}>
      <ThemeProvider theme={theme}>
      { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
-     <Loading/>
      </ThemeProvider>
   </Suspense>
   );

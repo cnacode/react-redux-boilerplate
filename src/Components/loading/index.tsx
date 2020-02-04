@@ -7,13 +7,15 @@ const Loader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin-top: 40vh;
 `
 
-const Loading = () => {
+const Loading = (props: any) => {
+    console.log(props)
     return (
     <Loader>
-        <GridLoader/>
+        <GridLoader
+        />
     </Loader>
     );
 }
