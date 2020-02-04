@@ -2,7 +2,8 @@ import React, {Suspense} from 'react';
 import './App.css';
 import { AuthenticationState } from './Components/authentication'
 import { connect } from 'react-redux';
-
+import { ThemeProvider } from 'styled-components';
+import theme from './Theme';
 
 
 const AuthenticatedApp = React.lazy(() => import('./Pages/authenticated-app'))
@@ -11,6 +12,7 @@ const UnauthenticatedApp = React.lazy(() => import('./Pages/unauthenticated-app'
 
 export type AppProps = {
   authentication?: AuthenticationState,
+  theme: any,
 }
 
 
@@ -19,7 +21,9 @@ const App = (props: AppProps) => {
   
   return (
   <Suspense fallback={<div>Loading...</div>}>
-    { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
+     <ThemeProvider theme={theme}>
+     { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
+     </ThemeProvider>
   </Suspense>
   );
 }
