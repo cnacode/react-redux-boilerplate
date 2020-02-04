@@ -1,8 +1,9 @@
 import React, {Suspense} from 'react';
-import './App.css';
+import './Theme/App.css';
 import { AuthenticationState } from './Components/authentication'
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import Loading from './Components/loading';
 import theme from './Theme';
 
 
@@ -20,9 +21,10 @@ const App = (props: AppProps) => {
   const authenticated = (props && props.authentication && props.authentication.authenticated) ? props.authentication.authenticated : false;
   
   return (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={Loading}>
      <ThemeProvider theme={theme}>
      { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
+     <Loading/>
      </ThemeProvider>
   </Suspense>
   );
