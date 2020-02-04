@@ -1,9 +1,15 @@
 # fe-boilerplate-react-redux
 a typescript based react boilerplate with redux for state management
 
+
+## Architecture:
+
+
+
 ## Features:
 * logging
 * authentication
+* loading screen
 
 
 ## Todo:
