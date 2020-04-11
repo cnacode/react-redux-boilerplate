@@ -1,44 +1,41 @@
-import React, { FC, Suspense} from 'react';
-import '../Theme/App.css';
-import { AuthenticationState } from '../Components/authentication'
-import { connect } from 'react-redux';
-import { ThemeProvider } from 'emotion-theming'
-import Loading from '../Components/loading';
-import theme from '../Theme';
+import React, { FC, Suspense } from "react"
+import "../core/theme/App.css"
+import { AuthenticationState } from "../core/authentication"
+import { connect } from "react-redux"
+import { ThemeProvider } from "emotion-theming"
+import Loading from "../components/loading"
+import theme from "../core/theme"
 
-
-const AuthenticatedApp = React.lazy(() => import('./authenticated-app'))
-const UnauthenticatedApp = React.lazy(() => import('./unauthenticated-app'))
-
+const AuthenticatedApp = React.lazy(() => import("./authenticated-app"))
+const UnauthenticatedApp = React.lazy(() => import("./unauthenticated-app"))
 
 export type AppProps = {
-  authentication: AuthenticationState,
-  theme: any,
+    authentication: AuthenticationState
+    theme: any
 }
 
-
-const App: FC<AppProps> = (
-  {
-  authentication: {
-    authenticated = false, 
-    inProgress = false,
-  },
+const App: FC<AppProps> = ({
+    authentication: { authenticated = false, inProgress = false },
 }) => {
-  if(inProgress) return <ThemeProvider theme={theme}><Loading/></ThemeProvider>;
+    if (inProgress)
+        return (
+            <ThemeProvider theme={theme}>
+                <Loading />
+            </ThemeProvider>
+        )
 
-  return (
-  <Suspense fallback={Loading}>
-      <ThemeProvider theme={theme}>
-      { authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp /> }
-      </ThemeProvider>
-  </Suspense>
-  );
+    return (
+        <Suspense fallback={Loading}>
+            <ThemeProvider theme={theme}>
+                {authenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+            </ThemeProvider>
+        </Suspense>
+    )
 }
 
 const mapStateToProps = (state: AppProps) => ({
-  ...state
+    ...state,
 })
 
-
 const connectedApp = connect(mapStateToProps)(App)
-export default connectedApp;
+export default connectedApp

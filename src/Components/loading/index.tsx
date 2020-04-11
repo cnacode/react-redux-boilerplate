@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { GridLoader } from 'react-spinners';
+import React, { FC } from "react"
+import { GridLoader } from "react-spinners"
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled"
 
 const LoadingWrap = styled.div`
     display: flex;
@@ -13,18 +13,18 @@ const LoadingWrap = styled.div`
             background-color: ${(props: any) => props.theme.colors.secondary};
         }
     }
-`;
+`
 
 type Props = {
-    theme?: any,
+    theme?: any
 }
 
 const Loading: FC<Props> = (props) => {
     return (
-    <LoadingWrap>
-        <GridLoader/>
-    </LoadingWrap>
-    );
+        <LoadingWrap>
+            <GridLoader />
+        </LoadingWrap>
+    )
 }
 
-export default Loading;
+export default Loading
