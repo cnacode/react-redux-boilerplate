@@ -3,5 +3,5 @@
     "arrowParens": "always",
     "semi": false,
     "tabWidth": 4,
-    "bracketSpacing":true
-  }
+    "bracketSpacing": true
+}

@@ -1,10 +1,9 @@
 import React, { FC, Suspense } from "react"
-import "../core/theme/App.css"
 import { AuthenticationState } from "../core/authentication"
 import { connect } from "react-redux"
 import { ThemeProvider } from "emotion-theming"
-import Loading from "../components/loading"
-import theme from "../core/theme"
+import Loading from "components/loading"
+import theme from "core/theme"
 
 const AuthenticatedApp = React.lazy(() => import("./authenticated-app"))
 const UnauthenticatedApp = React.lazy(() => import("./unauthenticated-app"))

@@ -1,11 +1,11 @@
 {
-    "name": "react-redux-boilerplate",
+    "name": "fe-boilerplate-react-redux",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@emotion/react": "^11.1.4",
         "@emotion/styled": "^11.0.0",
-        "prettier": "^2.2.1",
+        "@emotion/react": "11.1.4",
+        "emotion-theming": "^11.0.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-redux": "^7.2.2",
@@ -14,19 +14,25 @@
         "redux": "^4.0.5",
         "redux-actions": "^2.6.5",
         "redux-thunk": "^2.3.0",
-        "typescript": "^4.0.3",
-        "web-vitals": "^0.2.4"
+        "typescript": "~4.1.3"
     },
     "devDependencies": {
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "@types/jest": "^26.0.15",
-        "@types/node": "^12.0.0",
-        "@types/react": "^16.9.53",
-        "@types/react-dom": "^16.9.8",
+        "@testing-library/jest-dom": "^5.11.9",
+        "@testing-library/react": "^11.2.3",
+        "@testing-library/user-event": "^12.6.0",
+        "@types/jest": "^26.0.20",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
         "@types/react-redux": "^7.1.15",
-        "@types/redux-actions": "^2.6.1"
+        "@types/redux-actions": "^2.6.1",
+        "@types/redux-thunk": "^2.1.32",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.17.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-loader": "^3.0.4",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "prettier":"2.2.1"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -35,10 +41,7 @@
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
+        "extends": "react-app"
     },
     "browserslist": {
         "production": [
